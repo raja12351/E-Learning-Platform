@@ -17,13 +17,13 @@ import java.util.Optional;
 public class ClassService {
 
     @Autowired
-    private CLassRepository cLassRepository;
+    CLassRepository cLassRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
+    CourseRepository courseRepository;
 
     public String addClass(ClassDto classDto) throws CourseException{
-        Optional<Course> courseOpt = courseRepository.findById(classDto.getCourseId());
+        Optional<Course> courseOpt = courseRepository.findByCourseId(classDto.getCourseId());
 
         if(courseOpt.isEmpty()){
             throw new CourseException("No course found with given id: " + classDto.getCourseId());
@@ -38,8 +38,8 @@ public class ClassService {
 
         classes.setCourse(course);
 
-        cLassRepository.save(classes);
-        courseRepository.save(course);
+        cLassRepository.saveClass(classes);
+        courseRepository.saveCourse(course);
 
         return "Class has been added to tha database and it's particular course";
     }

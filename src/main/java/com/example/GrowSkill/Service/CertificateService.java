@@ -4,11 +4,9 @@ import com.example.GrowSkill.DTOs.RequestDto.CertificateDto;
 import com.example.GrowSkill.Exceptions.CourseException;
 import com.example.GrowSkill.Models.Certificate;
 import com.example.GrowSkill.Models.Course;
-import com.example.GrowSkill.Models.VideoRecordings;
 import com.example.GrowSkill.Repository.CertificateRepository;
 import com.example.GrowSkill.Repository.CourseRepository;
 import com.example.GrowSkill.Transformers.CertificateTransformer;
-import com.example.GrowSkill.Transformers.VideoTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +35,8 @@ public class CertificateService {
         course.setCertificate(certificate);
         certificate.setCourse(course);
 
-        courseRepository.save(course);
-        certificateRepository.save(certificate);
+        courseRepository.saveCourse(course);
+        certificateRepository.saveCertificate(certificate);
 
         return "certificate is added with the course.";
     }

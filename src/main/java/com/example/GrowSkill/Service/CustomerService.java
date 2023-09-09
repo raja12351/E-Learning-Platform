@@ -47,8 +47,8 @@ public class CustomerService {
         }
 
         assert course != null;
-        courseRepository.save(course);
-        customerRepository.save(customer);
+        courseRepository.saveCourse(course);
+        customerRepository.saveCustomer(customer);
 
         sendMail(course,customer);
 
@@ -74,7 +74,7 @@ public class CustomerService {
 
     public RecordDto getRecording(Integer customerId) throws CustomerException {
 
-        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+        Optional<Customer> customerOptional = customerRepository.findByCustomerId(customerId);
 
         if(customerOptional.isEmpty()){
             throw new CustomerException("No customer with given id: " + customerId);

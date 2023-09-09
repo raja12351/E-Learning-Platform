@@ -35,8 +35,8 @@ public class VideoService {
         course.setVideoRecordings(videoRecordings);
         videoRecordings.setCourse(course);
 
-        courseRepository.save(course);
-        videoRepository.save(videoRecordings);
+        courseRepository.saveCourse(course);
+        videoRepository.saveRecording(videoRecordings);
 
         return "Video has been added with the course.";
     }

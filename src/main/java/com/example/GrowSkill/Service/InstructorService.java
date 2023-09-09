@@ -16,16 +16,16 @@ import java.util.Optional;
 @Service
 public class InstructorService {
     @Autowired
-    private InstructorRepository instructorRepository;
+    InstructorRepository instructorRepository;
 
     @Autowired
-    private CourseRepository courseRepository;
+    CourseRepository courseRepository;
 
     public String addInstructor(InstructorDto instructorDto) {
 
         Instructor instructor  = InstructorTransformer.convertDtoToEntity(instructorDto);
 
-        instructorRepository.save(instructor);
+        instructorRepository.saveInstructor(instructor);
 
         return "Instructor is added successfully into the database.";
     }
@@ -49,8 +49,8 @@ public class InstructorService {
         course.getInstructorList().add(instructor);
         instructor.setCourse(course);
 
-        courseRepository.save(course);
-        instructorRepository.save(instructor);
+        courseRepository.saveCourse(course);
+        instructorRepository.saveInstructor(instructor);
 
         return "Instructor is assigned to the particular course.";
     }

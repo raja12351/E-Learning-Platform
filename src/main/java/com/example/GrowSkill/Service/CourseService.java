@@ -17,7 +17,7 @@ public class CourseService {
 
         Course course = CourseTransformer.convertDtoToEntity(courseDto);
 
-        courseRepository.save(course);
+        courseRepository.saveCourse(course);
 
         return "Course has been added successfully.";
     }
