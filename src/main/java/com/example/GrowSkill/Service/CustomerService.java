@@ -44,13 +44,12 @@ public class CustomerService {
 
             course.getCustomerList().add(customer);
             customer.setCourse(course);
+
+            courseRepository.saveCourse(course);
+            customerRepository.saveCustomer(customer);
+
+            sendMail(course,customer);
         }
-
-        assert course != null;
-        courseRepository.saveCourse(course);
-        customerRepository.saveCustomer(customer);
-
-        sendMail(course,customer);
 
         return "Customer is added successfully into the database and it's particular course";
     }
